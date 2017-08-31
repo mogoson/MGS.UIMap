@@ -50,8 +50,8 @@ namespace Developer.Map
             this.flag = flag;
             this.color = color;
             this.diffuse = diffuse;
-        }//TrailInfo()_end
-    }//struct_end
+        }
+    }
 
     [AddComponentMenu("Developer/Map/FlagTrail")]
     [RequireComponent(typeof(RectTransform), typeof(RawImage))]
@@ -88,7 +88,7 @@ namespace Developer.Map
         protected virtual void Reset()
         {
             Start();
-        }//Reset()_end
+        }
 
         protected virtual void Start()
         {
@@ -100,7 +100,7 @@ namespace Developer.Map
             texture = new Texture2D(width, height);
             GetComponent<RawImage>().texture = texture;
             ClearPixels();
-        }//Start()_end
+        }
 
         protected virtual void LateUpdate()
         {
@@ -118,13 +118,13 @@ namespace Developer.Map
                     {
                         var oX = x + h;
                         var oY = y + v;
-                        if(Mathf.Pow(oX - x, 2) + Mathf.Pow(oY - y, 2) <= Mathf.Pow(r, 2))
+                        if (Mathf.Pow(oX - x, 2) + Mathf.Pow(oY - y, 2) <= Mathf.Pow(r, 2))
                             UpdatePixel(oX, oY, info.color);
-                    }//for()_end
-                }//for()_end
-            }//foreach()_end
+                    }
+                }
+            }
             UpdatePixels();
-        }//Update()_end
+        }
 
         /// <summary>
         /// Get mapping position.
@@ -133,7 +133,7 @@ namespace Developer.Map
         protected Vector2 GetMappingPos(RectTransform rTrans)
         {
             return rTrans.anchoredPosition + size * 0.5f;
-        }//G...()_end
+        }
 
         /// <summary>
         /// Update trail pixels.
@@ -142,7 +142,7 @@ namespace Developer.Map
         {
             texture.SetPixels(pixels);
             texture.Apply();
-        }//U...()_end
+        }
 
         /// <summary>
         /// Update trail pixel at mapping position.
@@ -154,7 +154,7 @@ namespace Developer.Map
         {
             if (x >= 0 && x < size.x && y >= 0 && y < size.y)
                 pixels[y * (int)size.x + x] = color;
-        }//U...()_end
+        }
         #endregion
 
         #region Public Method
@@ -166,9 +166,9 @@ namespace Developer.Map
             for (int i = 0; i < pixels.Length; i++)
             {
                 pixels[i] = new Color(0, 0, 0, 0);
-            }//for()_end
+            }
             UpdatePixels();
-        }//ClearPixels()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

@@ -30,7 +30,7 @@ namespace Developer.Map
             //Update flags.
             base.Update();
             UpdateMap();
-        }//Update()_end
+        }
 
         /// <summary>
         /// Update map's position.
@@ -39,7 +39,7 @@ namespace Developer.Map
         {
             var tPos = GetTargetPosition(dynamicFlags[0]);
             rTrans.anchoredPosition = -new Vector2(tPos.x * wFactor, tPos.z * hFactor);
-        }//UpdateMap()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

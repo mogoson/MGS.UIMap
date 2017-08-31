@@ -41,7 +41,7 @@ namespace Developer.Map
         protected virtual void Awake()
         {
             rTrans = GetComponent<RectTransform>();
-        }//Awake()_end
+        }
         #endregion
 
         #region Public Method
@@ -52,7 +52,7 @@ namespace Developer.Map
         public void UpdateFlagPosition(Vector2 anchored)
         {
             rTrans.anchoredPosition = anchored;
-        }//UpdateF...()_end
+        }
 
         /// <summary>
         /// Update flag's rotation.
@@ -60,7 +60,7 @@ namespace Developer.Map
         public void UpdateFlagRotation()
         {
             rTrans.localEulerAngles = Vector3.back * target.eulerAngles.y;
-        }//UpdateF...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

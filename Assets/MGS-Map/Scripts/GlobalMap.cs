@@ -49,8 +49,8 @@ namespace Developer.Map
             this.center = center;
             this.width = width;
             this.length = length;
-        }//TerrainInfo()_end
-    }//struct_end
+        }
+    }
 
     [AddComponentMenu("Developer/Map/GlobalMap")]
     [RequireComponent(typeof(RectTransform))]
@@ -95,12 +95,12 @@ namespace Developer.Map
             wFactor = rTrans.rect.width / terrainInfo.width;
             hFactor = rTrans.rect.height / terrainInfo.length;
             UpdateFlags(staticFlags);
-        }//Start()_end
+        }
 
         protected virtual void Update()
         {
             UpdateFlags(dynamicFlags);
-        }//Update()_end
+        }
 
         /// <summary>
         /// Update flags position and rotation.
@@ -113,8 +113,8 @@ namespace Developer.Map
                 var tPos = GetTargetPosition(flag);
                 flag.UpdateFlagPosition(new Vector2(tPos.x * wFactor, tPos.z * hFactor));
                 flag.UpdateFlagRotation();
-            }//foreach()_end
-        }//UpdateFlags()_end
+            }
+        }
 
         /// <summary>
         /// Get flag's target position.
@@ -124,7 +124,7 @@ namespace Developer.Map
         protected Vector3 GetTargetPosition(MapFlag flag)
         {
             return flag.target.position - terrainInfo.center.position;
-        }//GetT...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}
