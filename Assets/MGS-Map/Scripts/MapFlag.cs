@@ -1,26 +1,19 @@
 /*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson tech. Co., Ltd.
- *  FileName: MapFlag.cs
- *  Author: Mogoson   Version: 1.0   Date: 12/29/2016
- *  Version Description:
- *    Internal develop version,mainly to achieve its function.
- *  File Description:
- *    Ignore.
- *  Class List:
- *    <ID>           <name>             <description>
- *     1.            MapFlag               Ignore.
- *  Function List:
- *    <class ID>     <name>             <description>
- *     1.
- *  History:
- *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     12/29/2016       1.0        Build this file.
+ *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *------------------------------------------------------------------------
+ *  File         :  MapFlag.cs
+ *  Description  :  Define map flag.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  12/29/2016
+ *  Description  :  Initial development version.
  *************************************************************************/
+
+using UnityEngine;
 
 namespace Developer.Map
 {
-    using UnityEngine;
-
     [AddComponentMenu("Developer/Map/MapFlag")]
     [RequireComponent(typeof(RectTransform))]
     public class MapFlag : MonoBehaviour
@@ -61,6 +54,16 @@ namespace Developer.Map
         {
             rTrans.localEulerAngles = Vector3.back * target.eulerAngles.y;
         }
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// Initialise MapFlag in edit mode (Only call this method in editor script).
+        /// </summary>
+        public void InitialiseInEditMode()
+        {
+            Awake();
+        }
+#endif
         #endregion
     }
 }

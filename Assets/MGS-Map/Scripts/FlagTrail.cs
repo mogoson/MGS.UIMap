@@ -1,29 +1,22 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
- *  FileName: FlagTrail.cs
- *  Author: Mogoson   Version: 1.0   Date: 1/5/2017
- *  Version Description:
- *    Internal develop version,mainly to achieve its function.
- *  File Description:
- *    Ignore.
- *  Class List:
- *    <ID>           <name>             <description>
- *     1.           FlagTrail              Ignore.
- *  Function List:
- *    <class ID>     <name>             <description>
- *     1.
- *  History:
- *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     1/5/2017       1.0        Build this file.
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+ *------------------------------------------------------------------------
+ *  File         :  FlagTrail.cs
+ *  Description  :  Define flag trail.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  1/5/2017
+ *  Description  :  Initial development version.
  *************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Developer.Map
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.UI;
-
     /// <summary>
     /// Flag Trail Info.
     /// </summary>
@@ -41,10 +34,16 @@ namespace Developer.Map
         public Color color;
 
         /// <summary>
-        /// Trail diffuse.
+        /// Trail pixel diffuse.
         /// </summary>
         public int diffuse;
 
+        /// <summary>
+        /// Constructor of TrailInfo.
+        /// </summary>
+        /// <param name="flag">Target flag.</param>
+        /// <param name="color">Trail color.</param>
+        /// <param name="diffuse">Trail pixel diffuse.</param>
         public TrailInfo(RectTransform flag, Color color, int diffuse)
         {
             this.flag = flag;
@@ -85,20 +84,9 @@ namespace Developer.Map
         #endregion
 
         #region Protected Method
-        protected virtual void Reset()
-        {
-            Start();
-        }
-
         protected virtual void Start()
         {
-            rectTrans = GetComponent<RectTransform>();
-            var width = (int)rectTrans.rect.width;
-            var height = (int)rectTrans.rect.height;
-            size = new Vector2(width, height);
-            pixels = new Color[width * height];
-            texture = new Texture2D(width, height);
-            GetComponent<RawImage>().texture = texture;
+            Initialise();
             ClearPixels();
         }
 
@@ -124,6 +112,20 @@ namespace Developer.Map
                 }
             }
             UpdatePixels();
+        }
+
+        /// <summary>
+        /// Initialise trail texture.
+        /// </summary>
+        protected void Initialise()
+        {
+            rectTrans = GetComponent<RectTransform>();
+            var width = (int)rectTrans.rect.width;
+            var height = (int)rectTrans.rect.height;
+            size = new Vector2(width, height);
+            pixels = new Color[width * height];
+            texture = new Texture2D(width, height);
+            GetComponent<RawImage>().texture = texture;
         }
 
         /// <summary>
@@ -169,6 +171,16 @@ namespace Developer.Map
             }
             UpdatePixels();
         }
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// Clear trail pixels in edit mode (Only call this method in editor script).
+        /// </summary>
+        public void ClearPixelsInEditMode()
+        {
+            Start();
+        }
+#endif
         #endregion
     }
 }

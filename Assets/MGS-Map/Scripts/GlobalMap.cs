@@ -1,28 +1,21 @@
 /*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson tech. Co., Ltd.
- *  FileName: GlobalMap.cs
- *  Author: Mogoson   Version: 1.0   Date: 12/29/2016
- *  Version Description:
- *    Internal develop version,mainly to achieve its function.
- *  File Description:
- *    Ignore.
- *  Class List:
- *    <ID>           <name>             <description>
- *     1.           GlobalMap              Ignore.
- *  Function List:
- *    <class ID>     <name>             <description>
- *     1.
- *  History:
- *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     12/29/2016       1.0        Build this file.
+ *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *------------------------------------------------------------------------
+ *  File         :  GlobalMap.cs
+ *  Description  :  Define global map.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  12/29/2016
+ *  Description  :  Initial development version.
  *************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Developer.Map
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     /// <summary>
     /// Terrain Info.
     /// </summary>
@@ -44,6 +37,12 @@ namespace Developer.Map
         /// </summary>
         public float length;
 
+        /// <summary>
+        /// Constructor of TerrainInfo.
+        /// </summary>
+        /// <param name="center">Center of terrain.</param>
+        /// <param name="width">Width of terrain.</param>
+        /// <param name="length">Length of terrain.</param>
         public TerrainInfo(Transform center, float width, float length)
         {
             this.center = center;
@@ -125,6 +124,19 @@ namespace Developer.Map
         {
             return flag.target.position - terrainInfo.center.position;
         }
+        #endregion
+
+        #region Public Method
+#if UNITY_EDITOR
+        /// <summary>
+        /// Align flags in edit mode (Only call this method in editor script).
+        /// </summary>
+        public void AlignFlagsInEditMode()
+        {
+            Start();
+            Update();
+        }
+#endif
         #endregion
     }
 }

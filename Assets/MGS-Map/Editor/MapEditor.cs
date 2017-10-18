@@ -1,8 +1,8 @@
 /*************************************************************************
  *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
  *------------------------------------------------------------------------
- *  File         :  LocalMap.cs
- *  Description  :  Define local map.
+ *  File         :  MapEditor.cs
+ *  Description  :  Custom editor for map.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,28 +10,21 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using UnityEngine;
+using UnityEditor;
 
 namespace Developer.Map
 {
-    [AddComponentMenu("Developer/Map/LocalMap")]
-    public class LocalMap : GlobalMap
+    [CanEditMultipleObjects]
+    public class MapEditor : Editor
     {
         #region Protected Method
-        protected override void Update()
+        protected void MarkSceneDirty()
         {
-            //Update flags.
-            base.Update();
-            UpdateMap();
-        }
-
-        /// <summary>
-        /// Update map's position.
-        /// </summary>
-        protected void UpdateMap()
-        {
-            var tPos = GetTargetPosition(dynamicFlags[0]);
-            rTrans.anchoredPosition = -new Vector2(tPos.x * wFactor, tPos.z * hFactor);
+#if UNITY_5_3_OR_NEWER
+            EditorSceneManager.MarkAllScenesDirty();
+#else
+            EditorApplication.MarkSceneDirty();
+#endif
         }
         #endregion
     }
