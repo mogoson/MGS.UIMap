@@ -16,6 +16,7 @@ using UnityEngine;
 namespace Developer.Map
 {
     [CustomEditor(typeof(GlobalMap), true)]
+    [CanEditMultipleObjects]
     public class GlobalMapEditor : MapEditor
     {
         #region Property and Field

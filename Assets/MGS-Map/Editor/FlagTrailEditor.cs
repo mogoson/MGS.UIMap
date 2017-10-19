@@ -16,6 +16,7 @@ using UnityEngine;
 namespace Developer.Map
 {
     [CustomEditor(typeof(FlagTrail), true)]
+    [CanEditMultipleObjects]
     public class FlagTrailEditor : MapEditor
     {
         #region Property and Field

@@ -18,7 +18,6 @@ using UnityEditor.SceneManagement;
 
 namespace Developer.Map
 {
-    [CanEditMultipleObjects]
     public class MapEditor : Editor
     {
         #region Protected Method
