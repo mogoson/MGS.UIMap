@@ -1,4 +1,4 @@
-# MGS-Map
+﻿# MGS-Map
 - [中文手册](./README_ZH.md)
 
 ## Summary
@@ -20,7 +20,7 @@
 ## Preview
 - Global Map Trail
 
-![GlobalMapTrail](./Attachments/GlobalMapTrail.png)
+![GlobalMapTrail](./Attachments/GlobalMapTrail.gif)
 
 ## Contact
 - If you have any questions, fell free to contact me at mogoson@qq.com.

@@ -1,4 +1,4 @@
-# MGS-Map
+﻿# MGS-Map
 - [English Manual](./README.md)
 
 ## 概述
@@ -20,7 +20,7 @@
 ## 图示
 - Global Map Trail
 
-![GlobalMapTrail](./Attachments/GlobalMapTrail.png)
+![GlobalMapTrail](./Attachments/GlobalMapTrail.gif)
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
