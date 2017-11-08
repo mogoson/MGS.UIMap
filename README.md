@@ -20,7 +20,7 @@
 ## Preview
 - Global Map Trail
 
-![GlobalMapTrail](./Attachments/GlobalMapTrail.gif)
+![GlobalMapTrail](./Attachments/README_Image/GlobalMapTrail.gif)
 
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@qq.com.

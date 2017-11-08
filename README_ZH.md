@@ -17,10 +17,10 @@
 ## 案例
 - “MGS-Map/Scenes”目录下存有上述功能的演示案例，供读者参考。
 
-## 图示
+## 预览
 - Global Map Trail
 
-![GlobalMapTrail](./Attachments/GlobalMapTrail.gif)
+![GlobalMapTrail](./Attachments/README_Image/GlobalMapTrail.gif)
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
