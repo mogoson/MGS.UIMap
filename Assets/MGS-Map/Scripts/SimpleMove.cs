@@ -26,7 +26,7 @@ namespace Developer.Map
         private void Update()
         {
             transform.Translate(Input.GetAxis("Vertical") * Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
-            transform.Rotate(Input.GetAxis("Horizontal") * Vector3.up, rotateSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime);
         }
         #endregion
     }

@@ -20,7 +20,7 @@ namespace Developer.Map
     public class GlobalMapEditor : MapEditor
     {
         #region Property and Field
-        protected GlobalMap script { get { return target as GlobalMap; } }
+        protected GlobalMap Script { get { return target as GlobalMap; } }
         #endregion
 
         #region Protected Method
@@ -38,13 +38,13 @@ namespace Developer.Map
 
         protected bool CheckMapSettings()
         {
-            if (script.terrainInfo.center == null || script.terrainInfo.width <= 0 || script.terrainInfo.length <= 0)
+            if (Script.terrainInfo.center == null || Script.terrainInfo.width <= 0 || Script.terrainInfo.length <= 0)
                 return false;
 
-            if (CheckInitialiseFlags(script.dynamicFlags.ToArray()) == false)
+            if (CheckInitialiseFlags(Script.dynamicFlags.ToArray()) == false)
                 return false;
 
-            return CheckInitialiseFlags(script.staticFlags.ToArray());
+            return CheckInitialiseFlags(Script.staticFlags.ToArray());
         }
         #endregion
 
@@ -57,7 +57,7 @@ namespace Developer.Map
             {
                 if (CheckMapSettings())
                 {
-                    script.AlignFlagsInEditMode();
+                    Script.AlignFlagsInEditMode();
                     MarkSceneDirty();
                 }
                 else

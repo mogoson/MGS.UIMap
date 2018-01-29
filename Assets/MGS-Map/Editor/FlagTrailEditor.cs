@@ -20,7 +20,7 @@ namespace Developer.Map
     public class FlagTrailEditor : MapEditor
     {
         #region Property and Field
-        protected FlagTrail script { get { return target as FlagTrail; } }
+        protected FlagTrail Script { get { return target as FlagTrail; } }
         #endregion
 
         #region Public Method
@@ -30,7 +30,7 @@ namespace Developer.Map
 
             if (GUILayout.Button("Clear Pixels"))
             {
-                script.ClearPixelsInEditMode();
+                Script.ClearPixelsInEditMode();
                 MarkSceneDirty();
                 EditorUtility.UnloadUnusedAssetsImmediate(true);
             }

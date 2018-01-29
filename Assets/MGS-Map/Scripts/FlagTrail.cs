@@ -78,7 +78,7 @@ namespace Developer.Map
         protected Texture2D texture;
 
         /// <summary>
-        /// Sixe of trial.
+        /// Size of trial.
         /// </summary>
         protected Vector2 size;
         #endregion
