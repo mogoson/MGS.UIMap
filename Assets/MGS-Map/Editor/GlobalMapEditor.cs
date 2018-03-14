@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  GlobalMapEditor.cs
- *  Description  :  Editor for GlobalMap.
+ *  Description  :  Editor for GlobalMap component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  12/29/2016
+ *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -19,8 +19,8 @@ namespace Developer.Map
     [CanEditMultipleObjects]
     public class GlobalMapEditor : MapEditor
     {
-        #region Property and Field
-        protected GlobalMap Script { get { return target as GlobalMap; } }
+        #region Field and Property
+        protected GlobalMap Target { get { return target as GlobalMap; } }
         #endregion
 
         #region Protected Method
@@ -31,20 +31,20 @@ namespace Developer.Map
                 if (flag == null)
                     return false;
                 else
-                    flag.InitialiseInEditMode();
+                    flag.InitializeInEditor();
             }
             return true;
         }
 
         protected bool CheckMapSettings()
         {
-            if (Script.terrainInfo.center == null || Script.terrainInfo.width <= 0 || Script.terrainInfo.length <= 0)
+            if (Target.terrainInfo.center == null || Target.terrainInfo.width <= 0 || Target.terrainInfo.length <= 0)
                 return false;
 
-            if (CheckInitialiseFlags(Script.dynamicFlags.ToArray()) == false)
+            if (CheckInitialiseFlags(Target.staticFlags.ToArray()) == false)
                 return false;
 
-            return CheckInitialiseFlags(Script.staticFlags.ToArray());
+            return CheckInitialiseFlags(Target.dynamicFlags.ToArray());
         }
         #endregion
 
@@ -57,11 +57,11 @@ namespace Developer.Map
             {
                 if (CheckMapSettings())
                 {
-                    Script.AlignFlagsInEditMode();
+                    Target.AlignFlagsInEditor();
                     MarkSceneDirty();
                 }
                 else
-                    Debug.LogError("The settings of map is incomplete or invalid.");
+                    Debug.LogError("The parameter settings is incomplete or invalid.");
             }
         }
         #endregion

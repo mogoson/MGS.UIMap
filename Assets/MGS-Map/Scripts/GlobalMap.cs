@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  GlobalMap.cs
  *  Description  :  Define global map.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  12/29/2016
+ *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -55,7 +55,7 @@ namespace Developer.Map
     [RequireComponent(typeof(RectTransform))]
     public class GlobalMap : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Terrain info.
         /// </summary>
@@ -74,25 +74,25 @@ namespace Developer.Map
         /// <summary>
         /// RectTransform of map UI.
         /// </summary>
-        protected RectTransform rTrans;
+        protected RectTransform rectTrans;
 
         /// <summary>
-        ///  Width Factor(Map width / Terrain width).
+        ///  Width ratio (Map width / Terrain width).
         /// </summary>
-        protected float wFactor = 0;
+        protected float widthRatio = 0;
 
         /// <summary>
-        /// Height Factor(Map height / Terrain length).
+        /// Height ratio (Map height / Terrain length).
         /// </summary>
-        protected float hFactor = 0;
+        protected float heightRatio = 0;
         #endregion
 
         #region Protected Method
         protected virtual void Start()
         {
-            rTrans = GetComponent<RectTransform>();
-            wFactor = rTrans.rect.width / terrainInfo.width;
-            hFactor = rTrans.rect.height / terrainInfo.length;
+            rectTrans = GetComponent<RectTransform>();
+            widthRatio = rectTrans.rect.width / terrainInfo.width;
+            heightRatio = rectTrans.rect.height / terrainInfo.length;
             UpdateFlags(staticFlags);
         }
 
@@ -109,29 +109,29 @@ namespace Developer.Map
         {
             foreach (var flag in flags)
             {
-                var tPos = GetTargetPosition(flag);
-                flag.UpdateFlagPosition(new Vector2(tPos.x * wFactor, tPos.z * hFactor));
+                flag.UpdateFlagPosition(GetMappingPos(flag));
                 flag.UpdateFlagRotation();
             }
         }
 
         /// <summary>
-        /// Get flag's target position.
+        /// Get mapping position of flag.
         /// </summary>
         /// <param name="flag">Map flag.</param>
-        /// <returns></returns>
-        protected Vector3 GetTargetPosition(MapFlag flag)
+        /// <returns>Mapping position</returns>
+        protected Vector3 GetMappingPos(MapFlag flag)
         {
-            return flag.target.position - terrainInfo.center.position;
+            var offset = flag.target.position - terrainInfo.center.position;
+            return new Vector2(offset.x * widthRatio, offset.z * heightRatio);
         }
         #endregion
 
         #region Public Method
 #if UNITY_EDITOR
         /// <summary>
-        /// Align flags in edit mode (Only call this method in editor script).
+        /// Align flags to map base on target (Only call this method in editor script).
         /// </summary>
-        public void AlignFlagsInEditMode()
+        public void AlignFlagsInEditor()
         {
             Start();
             Update();

@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  LocalMap.cs
  *  Description  :  Define local map.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  12/29/2016
+ *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -20,18 +20,17 @@ namespace Developer.Map
         #region Protected Method
         protected override void Update()
         {
-            //Update flags.
+            //Update flags position and rotation.
             base.Update();
-            UpdateMap();
+            UpdateMapPos();
         }
 
         /// <summary>
         /// Update map's position.
         /// </summary>
-        protected void UpdateMap()
+        protected void UpdateMapPos()
         {
-            var tPos = GetTargetPosition(dynamicFlags[0]);
-            rTrans.anchoredPosition = -new Vector2(tPos.x * wFactor, tPos.z * hFactor);
+            rectTrans.anchoredPosition = -GetMappingPos(dynamicFlags[0]);
         }
         #endregion
     }

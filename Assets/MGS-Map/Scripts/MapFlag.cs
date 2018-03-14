@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MapFlag.cs
  *  Description  :  Define map flag.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  12/29/2016
+ *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -18,7 +18,7 @@ namespace Developer.Map
     [RequireComponent(typeof(RectTransform))]
     public class MapFlag : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Flag's target.
         /// </summary>
@@ -27,13 +27,13 @@ namespace Developer.Map
         /// <summary>
         /// RectTransform of MapFlag UI.
         /// </summary>
-        protected RectTransform rTrans;
+        protected RectTransform rectTrans;
         #endregion
 
         #region Protected Method
         protected virtual void Awake()
         {
-            rTrans = GetComponent<RectTransform>();
+            rectTrans = GetComponent<RectTransform>();
         }
         #endregion
 
@@ -44,7 +44,7 @@ namespace Developer.Map
         /// <param name="anchored">Anchored position.</param>
         public void UpdateFlagPosition(Vector2 anchored)
         {
-            rTrans.anchoredPosition = anchored;
+            rectTrans.anchoredPosition = anchored;
         }
 
         /// <summary>
@@ -52,14 +52,14 @@ namespace Developer.Map
         /// </summary>
         public void UpdateFlagRotation()
         {
-            rTrans.localEulerAngles = Vector3.back * target.eulerAngles.y;
+            rectTrans.localEulerAngles = Vector3.back * target.eulerAngles.y;
         }
 
 #if UNITY_EDITOR
         /// <summary>
-        /// Initialise MapFlag in edit mode (Only call this method in editor script).
+        /// Initialise MapFlag (Only call this method in editor script).
         /// </summary>
-        public void InitialiseInEditMode()
+        public void InitializeInEditor()
         {
             Awake();
         }

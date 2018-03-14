@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  FlagTrail.cs
  *  Description  :  Define flag trail.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  1/5/2017
+ *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -56,16 +56,16 @@ namespace Developer.Map
     [RequireComponent(typeof(RectTransform), typeof(RawImage))]
     public class FlagTrail : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Trail info.
         /// </summary>
         public List<TrailInfo> trailInfo;
 
         /// <summary>
-        /// Pixels of trail texture.
+        /// Pixels color of trail texture.
         /// </summary>
-        protected Color[] pixels;
+        protected Color[] pixelColors;
 
         /// <summary>
         /// RectTransform of trail.
@@ -73,45 +73,34 @@ namespace Developer.Map
         protected RectTransform rectTrans;
 
         /// <summary>
-        /// Texture2D of trail.
+        /// Texture2D to draw trail.
         /// </summary>
         protected Texture2D texture;
 
         /// <summary>
-        /// Size of trial.
+        /// Width of trial texture.
         /// </summary>
-        protected Vector2 size;
+        protected int width = 0;
+
+        /// <summary>
+        /// Height of trial texture.
+        /// </summary>
+        protected int height = 0;
+
+        private Vector2 pos = Vector2.zero;
+        private int x = 0, y = 0, r = 0;
         #endregion
 
         #region Protected Method
         protected virtual void Start()
         {
             Initialise();
-            ClearPixels();
+            ClearTrail();
         }
 
         protected virtual void LateUpdate()
         {
-            foreach (var info in trailInfo)
-            {
-                var mPos = GetMappingPos(info.flag);
-                var x = (int)mPos.x;
-                var y = (int)mPos.y;
-                var r = info.diffuse;
-
-                //Set the circle(center is (x, y), radius is r) area's color.
-                for (int h = -r; h <= r; h++)
-                {
-                    for (int v = -r; v <= r; v++)
-                    {
-                        var oX = x + h;
-                        var oY = y + v;
-                        if (Mathf.Pow(oX - x, 2) + Mathf.Pow(oY - y, 2) <= Mathf.Pow(r, 2))
-                            UpdatePixel(oX, oY, info.color);
-                    }
-                }
-            }
-            UpdatePixels();
+            UpdateTrail();
         }
 
         /// <summary>
@@ -120,42 +109,70 @@ namespace Developer.Map
         protected void Initialise()
         {
             rectTrans = GetComponent<RectTransform>();
-            var width = (int)rectTrans.rect.width;
-            var height = (int)rectTrans.rect.height;
-            size = new Vector2(width, height);
-            pixels = new Color[width * height];
+
+            width = (int)rectTrans.rect.width;
+            height = (int)rectTrans.rect.height;
+
+            pixelColors = new Color[width * height];
             texture = new Texture2D(width, height);
             GetComponent<RawImage>().texture = texture;
         }
 
         /// <summary>
-        /// Get mapping position.
+        /// Update the pixels color of trail texture.
         /// </summary>
-        /// <param name="rTrans">RectTransform.</param>
-        protected Vector2 GetMappingPos(RectTransform rTrans)
+        protected void UpdateTrail()
         {
-            return rTrans.anchoredPosition + size * 0.5f;
+            foreach (var info in trailInfo)
+            {
+                pos = GetMappingPos(info.flag);
+                x = (int)pos.x;
+                y = (int)pos.y;
+                r = info.diffuse;
+
+                //Set the circle(center is (x, y), radius is r) area's color.
+                for (int h = -r; h <= r; h++)
+                {
+                    for (int v = -r; v <= r; v++)
+                    {
+                        if (Mathf.Pow(h, 2) + Mathf.Pow(v, 2) <= Mathf.Pow(r, 2))
+                            SetPixelAt(x + h, y + v, info.color);
+                    }
+                }
+            }
+            UpdateTexture();
         }
 
         /// <summary>
-        /// Update trail pixels.
+        /// Get mapping position of flag trail.
         /// </summary>
-        protected void UpdatePixels()
+        /// <param name="flag">RectTransform of map flag.</param>
+        /// <returns>Mapping position.</returns>
+        protected Vector2 GetMappingPos(RectTransform flag)
         {
-            texture.SetPixels(pixels);
+            return flag.anchoredPosition + new Vector2(width, height) * 0.5f;
+        }
+
+        /// <summary>
+        /// Update the pixels of trail texture.
+        /// </summary>
+        protected void UpdateTexture()
+        {
+            texture.SetPixels(pixelColors);
             texture.Apply();
         }
 
         /// <summary>
-        /// Update trail pixel at mapping position.
+        /// Set trail pixel color at mapping position.
         /// </summary>
         /// <param name="x">Mapping x.</param>
         /// <param name="y">Mapping y.</param>
         /// <param name="color">Pixel color.</param>
-        protected void UpdatePixel(int x, int y, Color color)
+        protected void SetPixelAt(int x, int y, Color color)
         {
-            if (x >= 0 && x < size.x && y >= 0 && y < size.y)
-                pixels[y * (int)size.x + x] = color;
+            x = Mathf.Clamp(x, 0, width - 1);
+            y = Mathf.Clamp(y, 0, height - 1);
+            pixelColors[y * width + x] = color;
         }
         #endregion
 
@@ -163,20 +180,20 @@ namespace Developer.Map
         /// <summary>
         /// Clear trail pixels.
         /// </summary>
-        public void ClearPixels()
+        public void ClearTrail()
         {
-            for (int i = 0; i < pixels.Length; i++)
+            for (int i = 0; i < pixelColors.Length; i++)
             {
-                pixels[i] = new Color(0, 0, 0, 0);
+                pixelColors[i] = Color.clear;
             }
-            UpdatePixels();
+            UpdateTexture();
         }
 
 #if UNITY_EDITOR
         /// <summary>
-        /// Clear trail pixels in edit mode (Only call this method in editor script).
+        /// Clear the pixels of trail texture (Only call this method in editor script).
         /// </summary>
-        public void ClearPixelsInEditMode()
+        public void ClearTrailInEditor()
         {
             Start();
         }

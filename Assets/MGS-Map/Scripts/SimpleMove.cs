@@ -1,12 +1,12 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SimpleMove.cs
  *  Description  :  Simple move controller.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  12/29/2016
+ *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -17,7 +17,7 @@ namespace Developer.Map
     [AddComponentMenu("Developer/Map/SimpleMove")]
     public class SimpleMove : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         public float moveSpeed = 10;
         public float rotateSpeed = 60;
         #endregion

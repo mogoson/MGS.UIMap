@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  FlagTrailEditor.cs
- *  Description  :  Editor for FlagTrail.
+ *  Description  :  Editor for FlagTrail component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  12/29/2016
+ *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -19,8 +19,8 @@ namespace Developer.Map
     [CanEditMultipleObjects]
     public class FlagTrailEditor : MapEditor
     {
-        #region Property and Field
-        protected FlagTrail Script { get { return target as FlagTrail; } }
+        #region Field and Property
+        protected FlagTrail Target { get { return target as FlagTrail; } }
         #endregion
 
         #region Public Method
@@ -28,9 +28,9 @@ namespace Developer.Map
         {
             DrawDefaultInspector();
 
-            if (GUILayout.Button("Clear Pixels"))
+            if (GUILayout.Button("Clear Trail"))
             {
-                Script.ClearPixelsInEditMode();
+                Target.ClearTrailInEditor();
                 MarkSceneDirty();
                 EditorUtility.UnloadUnusedAssetsImmediate(true);
             }

@@ -1,7 +1,7 @@
 ==========================================================================
-  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+  Copyright © 2017-2018 Mogoson. All rights reserved.
   Name: MGS-Map
-  Author: Mogoson   Version: 0.1.0   Date: 1/5/2017
+  Author: Mogoson   Version: 0.1.0   Date: 3/8/2018
 ==========================================================================
   [Summary]
     Unity plugin for make mini map and draw motion trail in scene UI.
@@ -24,8 +24,8 @@
     target scene gameobjects when you finish the settings of GlobalMap
     or LocalMap component.
 
-    Click the "Clear Pixels" button to initialise the texture of flag
-    trail and clear it's pixels colors for FlagTrail component.
+    Click the "Clear Trail" button to initialise the texture of flag
+    trail and clear it's pixels colors.
 --------------------------------------------------------------------------
   [Demo]
     Demos in the path "MGS-Map/Scenes" provide reference to you.
