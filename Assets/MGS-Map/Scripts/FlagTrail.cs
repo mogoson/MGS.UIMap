@@ -114,7 +114,7 @@ namespace Developer.Map
             height = (int)rectTrans.rect.height;
 
             pixelColors = new Color[width * height];
-            texture = new Texture2D(width, height);
+            texture = new Texture2D(width, height) { name = "Trail" };
             GetComponent<RawImage>().texture = texture;
         }
 
