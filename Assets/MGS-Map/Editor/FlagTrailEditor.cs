@@ -13,7 +13,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Developer.Map
+namespace Mogoson.Map
 {
     [CustomEditor(typeof(FlagTrail), true)]
     [CanEditMultipleObjects]

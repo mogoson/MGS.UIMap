@@ -12,9 +12,12 @@
 
 using UnityEngine;
 
-namespace Developer.Map
+namespace Mogoson.Map
 {
-    [AddComponentMenu("Developer/Map/MapFlag")]
+	/// <summary>
+	/// Flag on map.
+	/// </summary>
+    [AddComponentMenu("Mogoson/Map/MapFlag")]
     [RequireComponent(typeof(RectTransform))]
     public class MapFlag : MonoBehaviour
     {

@@ -12,9 +12,12 @@
 
 using UnityEngine;
 
-namespace Developer.Map
+namespace Mogoson.Map
 {
-    [AddComponentMenu("Developer/Map/LocalMap")]
+	/// <summary>
+	/// Local map.
+	/// </summary>
+    [AddComponentMenu("Mogoson/Map/LocalMap")]
     public class LocalMap : GlobalMap
     {
         #region Protected Method

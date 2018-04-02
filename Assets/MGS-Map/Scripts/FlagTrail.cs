@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Developer.Map
+namespace Mogoson.Map
 {
     /// <summary>
     /// Flag Trail Info.
@@ -52,7 +52,10 @@ namespace Developer.Map
         }
     }
 
-    [AddComponentMenu("Developer/Map/FlagTrail")]
+	/// <summary>
+	/// Trail of flag on map.
+	/// </summary>
+    [AddComponentMenu("Mogoson/Map/FlagTrail")]
     [RequireComponent(typeof(RectTransform), typeof(RawImage))]
     public class FlagTrail : MonoBehaviour
     {

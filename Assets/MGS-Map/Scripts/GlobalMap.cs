@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Developer.Map
+namespace Mogoson.Map
 {
     /// <summary>
     /// Terrain Info.
@@ -51,7 +51,10 @@ namespace Developer.Map
         }
     }
 
-    [AddComponentMenu("Developer/Map/GlobalMap")]
+	/// <summary>
+	/// Global map.
+	/// </summary>
+    [AddComponentMenu("Mogoson/Map/GlobalMap")]
     [RequireComponent(typeof(RectTransform))]
     public class GlobalMap : MonoBehaviour
     {

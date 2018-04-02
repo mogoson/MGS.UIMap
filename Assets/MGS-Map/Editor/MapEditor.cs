@@ -16,7 +16,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
 
-namespace Developer.Map
+namespace Mogoson.Map
 {
     public class MapEditor : Editor
     {
