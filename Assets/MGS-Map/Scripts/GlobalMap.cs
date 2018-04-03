@@ -51,9 +51,9 @@ namespace Mogoson.Map
         }
     }
 
-	/// <summary>
-	/// Global map.
-	/// </summary>
+    /// <summary>
+    /// Global map.
+    /// </summary>
     [AddComponentMenu("Mogoson/Map/GlobalMap")]
     [RequireComponent(typeof(RectTransform))]
     public class GlobalMap : MonoBehaviour

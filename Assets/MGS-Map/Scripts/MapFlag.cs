@@ -14,9 +14,9 @@ using UnityEngine;
 
 namespace Mogoson.Map
 {
-	/// <summary>
-	/// Flag on map.
-	/// </summary>
+    /// <summary>
+    /// Flag on map.
+    /// </summary>
     [AddComponentMenu("Mogoson/Map/MapFlag")]
     [RequireComponent(typeof(RectTransform))]
     public class MapFlag : MonoBehaviour

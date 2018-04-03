@@ -14,9 +14,9 @@ using UnityEngine;
 
 namespace Mogoson.Map
 {
-	/// <summary>
-	/// Local map.
-	/// </summary>
+    /// <summary>
+    /// Local map.
+    /// </summary>
     [AddComponentMenu("Mogoson/Map/LocalMap")]
     public class LocalMap : GlobalMap
     {

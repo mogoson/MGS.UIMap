@@ -52,9 +52,9 @@ namespace Mogoson.Map
         }
     }
 
-	/// <summary>
-	/// Trail of flag on map.
-	/// </summary>
+    /// <summary>
+    /// Trail of flag on map.
+    /// </summary>
     [AddComponentMenu("Mogoson/Map/FlagTrail")]
     [RequireComponent(typeof(RectTransform), typeof(RawImage))]
     public class FlagTrail : MonoBehaviour
