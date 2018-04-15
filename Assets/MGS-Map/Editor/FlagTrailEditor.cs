@@ -17,7 +17,7 @@ namespace Mogoson.Map
 {
     [CustomEditor(typeof(FlagTrail), true)]
     [CanEditMultipleObjects]
-    public class FlagTrailEditor : MapEditor
+    public class FlagTrailEditor : BaseEditor
     {
         #region Field and Property
         protected FlagTrail Target { get { return target as FlagTrail; } }

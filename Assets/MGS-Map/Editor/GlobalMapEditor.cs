@@ -17,7 +17,7 @@ namespace Mogoson.Map
 {
     [CustomEditor(typeof(GlobalMap), true)]
     [CanEditMultipleObjects]
-    public class GlobalMapEditor : MapEditor
+    public class GlobalMapEditor : BaseEditor
     {
         #region Field and Property
         protected GlobalMap Target { get { return target as GlobalMap; } }

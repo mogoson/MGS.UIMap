@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  MapEditor.cs
- *  Description  :  Custom editor for map.
+ *  File         :  BaseEditor.cs
+ *  Description  :  Custom base editor.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -18,7 +18,7 @@ using UnityEditor.SceneManagement;
 
 namespace Mogoson.Map
 {
-    public class MapEditor : Editor
+    public class BaseEditor : Editor
     {
         #region Protected Method
         protected void MarkSceneDirty()
