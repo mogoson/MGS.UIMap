@@ -14,6 +14,7 @@ using UnityEngine;
 
 namespace Mogoson.Map
 {
+    [AddComponentMenu("Mogoson/Map/SimpleMove")]
     public class SimpleMove : MonoBehaviour
     {
         #region Field and Property

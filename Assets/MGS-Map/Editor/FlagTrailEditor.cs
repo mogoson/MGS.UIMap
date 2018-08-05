@@ -32,7 +32,7 @@ namespace Mogoson.Map
             {
                 Target.ClearTrailInEditor();
                 MarkSceneDirty();
-                EditorUtility.UnloadUnusedAssetsImmediate(true);
+                EditorUtility.UnloadUnusedAssetsImmediate(false);
             }
         }
         #endregion
