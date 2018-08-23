@@ -1,4 +1,4 @@
-==========================================================================
+﻿==========================================================================
   Copyright © 2017-2018 Mogoson. All rights reserved.
   Name: MGS-Map
   Author: Mogoson   Version: 0.1.0   Date: 3/8/2018
@@ -34,5 +34,5 @@
     https://github.com/mogoson/MGS-Map.
 --------------------------------------------------------------------------
   [Contact]
-    If you have any questions, feel free to contact me at mogoson@qq.com.
+    If you have any questions, feel free to contact me at mogoson@outlook.com.
 --------------------------------------------------------------------------

@@ -20,7 +20,7 @@
 ## 预览
 - Global Map Trail
 
-![GlobalMapTrail](./Attachments/README_Image/GlobalMapTrail.gif)
+![Global Map Trail](./Attachments/README_Image/GlobalMapTrail.gif)
 
 ## 联系
-- 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
+- 如果你有任何问题或者建议，欢迎通过mogoson@outlook.com联系我。
