@@ -23,17 +23,24 @@ namespace Mogoson.Map
         protected FlagTrail Target { get { return target as FlagTrail; } }
         #endregion
 
+        #region Protected Method
+        protected void DrawClearTrailButton()
+        {
+            if (GUILayout.Button("Clear Trail"))
+            {
+                Target.Initialize();
+                Target.ClearTrail();
+                MarkSceneDirty();
+                EditorUtility.UnloadUnusedAssetsImmediate(false);
+            }
+        }
+        #endregion
+
         #region Public Method
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
-            if (GUILayout.Button("Clear Trail"))
-            {
-                Target.ClearTrailInEditor();
-                MarkSceneDirty();
-                EditorUtility.UnloadUnusedAssetsImmediate(false);
-            }
+            DrawClearTrailButton();
         }
         #endregion
     }

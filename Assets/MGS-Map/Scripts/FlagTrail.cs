@@ -97,28 +97,13 @@ namespace Mogoson.Map
         #region Protected Method
         protected virtual void Start()
         {
-            Initialise();
+            Initialize();
             ClearTrail();
         }
 
         protected virtual void LateUpdate()
         {
             UpdateTrail();
-        }
-
-        /// <summary>
-        /// Initialise trail texture.
-        /// </summary>
-        protected void Initialise()
-        {
-            rectTrans = GetComponent<RectTransform>();
-
-            width = (int)rectTrans.rect.width;
-            height = (int)rectTrans.rect.height;
-
-            pixelColors = new Color[width * height];
-            texture = new Texture2D(width, height) { name = "Trail" };
-            GetComponent<RawImage>().texture = texture;
         }
 
         /// <summary>
@@ -139,11 +124,13 @@ namespace Mogoson.Map
                     for (int v = -r; v <= r; v++)
                     {
                         if (Mathf.Pow(h, 2) + Mathf.Pow(v, 2) <= Mathf.Pow(r, 2))
+                        {
                             SetPixelAt(x + h, y + v, info.color);
+                        }
                     }
                 }
             }
-            UpdateTexture();
+            UpdateTexture(pixelColors);
         }
 
         /// <summary>
@@ -159,9 +146,10 @@ namespace Mogoson.Map
         /// <summary>
         /// Update the pixels of trail texture.
         /// </summary>
-        protected void UpdateTexture()
+        /// <param name="pixels">Pixels color of trail texture.</param>
+        protected void UpdateTexture(Color[] pixels)
         {
-            texture.SetPixels(pixelColors);
+            texture.SetPixels(pixels);
             texture.Apply();
         }
 
@@ -181,6 +169,20 @@ namespace Mogoson.Map
 
         #region Public Method
         /// <summary>
+        /// Initialize trail texture.
+        /// </summary>
+        public void Initialize()
+        {
+            rectTrans = GetComponent<RectTransform>();
+            width = (int)rectTrans.rect.width;
+            height = (int)rectTrans.rect.height;
+
+            pixelColors = new Color[width * height];
+            texture = new Texture2D(width, height) { name = "Trail" };
+            GetComponent<RawImage>().texture = texture;
+        }
+
+        /// <summary>
         /// Clear trail pixels.
         /// </summary>
         public void ClearTrail()
@@ -189,18 +191,8 @@ namespace Mogoson.Map
             {
                 pixelColors[i] = Color.clear;
             }
-            UpdateTexture();
+            UpdateTexture(pixelColors);
         }
-
-#if UNITY_EDITOR
-        /// <summary>
-        /// Clear the pixels of trail texture (Only call this method in editor script).
-        /// </summary>
-        public void ClearTrailInEditor()
-        {
-            Start();
-        }
-#endif
         #endregion
     }
 }

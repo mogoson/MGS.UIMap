@@ -25,6 +25,11 @@ namespace Mogoson.Map
         #region Private Method
         private void Update()
         {
+            MoveGameObject();
+        }
+
+        private void MoveGameObject()
+        {
             transform.Translate(Input.GetAxis("Vertical") * Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
             transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime);
         }

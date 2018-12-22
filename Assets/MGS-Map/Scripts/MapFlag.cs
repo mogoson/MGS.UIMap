@@ -36,11 +36,19 @@ namespace Mogoson.Map
         #region Protected Method
         protected virtual void Awake()
         {
-            rectTrans = GetComponent<RectTransform>();
+            Initialize();
         }
         #endregion
 
         #region Public Method
+        /// <summary>
+        /// Initialize MapFlag.
+        /// </summary>
+        public void Initialize()
+        {
+            rectTrans = GetComponent<RectTransform>();
+        }
+
         /// <summary>
         /// Update flag's position.
         /// </summary>
@@ -57,16 +65,6 @@ namespace Mogoson.Map
         {
             rectTrans.localEulerAngles = Vector3.back * target.eulerAngles.y;
         }
-
-#if UNITY_EDITOR
-        /// <summary>
-        /// Initialise MapFlag (Only call this method in editor script).
-        /// </summary>
-        public void InitializeInEditor()
-        {
-            Awake();
-        }
-#endif
         #endregion
     }
 }

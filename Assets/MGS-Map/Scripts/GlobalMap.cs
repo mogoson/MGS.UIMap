@@ -93,15 +93,23 @@ namespace Mogoson.Map
         #region Protected Method
         protected virtual void Start()
         {
-            rectTrans = GetComponent<RectTransform>();
-            widthRatio = rectTrans.rect.width / terrainInfo.width;
-            heightRatio = rectTrans.rect.height / terrainInfo.length;
+            Initialize();
             UpdateFlags(staticFlags);
         }
 
         protected virtual void Update()
         {
             UpdateFlags(dynamicFlags);
+        }
+
+        /// <summary>
+        /// Initialize global map.
+        /// </summary>
+        protected void Initialize()
+        {
+            rectTrans = GetComponent<RectTransform>();
+            widthRatio = rectTrans.rect.width / terrainInfo.width;
+            heightRatio = rectTrans.rect.height / terrainInfo.length;
         }
 
         /// <summary>
@@ -130,16 +138,14 @@ namespace Mogoson.Map
         #endregion
 
         #region Public Method
-#if UNITY_EDITOR
         /// <summary>
-        /// Align flags to map base on target (Only call this method in editor script).
+        /// Update flags position and rotation.
         /// </summary>
-        public void AlignFlagsInEditor()
+        public void UpdateFlags()
         {
-            Start();
-            Update();
+            UpdateFlags(staticFlags);
+            UpdateFlags(dynamicFlags);
         }
-#endif
         #endregion
     }
 }

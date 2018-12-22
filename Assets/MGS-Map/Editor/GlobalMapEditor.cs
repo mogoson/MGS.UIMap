@@ -29,9 +29,10 @@ namespace Mogoson.Map
             foreach (var flag in flags)
             {
                 if (flag == null)
+                {
                     return false;
-                else
-                    flag.InitializeInEditor();
+                }
+                flag.Initialize();
             }
             return true;
         }
@@ -39,12 +40,32 @@ namespace Mogoson.Map
         protected bool CheckMapSettings()
         {
             if (Target.terrainInfo.center == null || Target.terrainInfo.width <= 0 || Target.terrainInfo.length <= 0)
+            {
                 return false;
+            }
 
             if (CheckInitialiseFlags(Target.staticFlags.ToArray()) == false)
+            {
                 return false;
+            }
 
             return CheckInitialiseFlags(Target.dynamicFlags.ToArray());
+        }
+
+        protected void DrawAlignFlagsButton()
+        {
+            if (GUILayout.Button("Align Flags"))
+            {
+                if (CheckMapSettings())
+                {
+                    Target.UpdateFlags();
+                    MarkSceneDirty();
+                }
+                else
+                {
+                    Debug.LogError("The parameter settings is incomplete or invalid.");
+                }
+            }
         }
         #endregion
 
@@ -52,17 +73,7 @@ namespace Mogoson.Map
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
-            if (GUILayout.Button("Align Flags"))
-            {
-                if (CheckMapSettings())
-                {
-                    Target.AlignFlagsInEditor();
-                    MarkSceneDirty();
-                }
-                else
-                    Debug.LogError("The parameter settings is incomplete or invalid.");
-            }
+            DrawAlignFlagsButton();
         }
         #endregion
     }
