@@ -105,7 +105,7 @@ namespace Mogoson.Map
         /// <summary>
         /// Initialize global map.
         /// </summary>
-        protected void Initialize()
+        protected virtual void Initialize()
         {
             rectTrans = GetComponent<RectTransform>();
             widthRatio = rectTrans.rect.width / terrainInfo.width;

@@ -44,7 +44,7 @@ namespace Mogoson.Map
         /// <summary>
         /// Initialize MapFlag.
         /// </summary>
-        public void Initialize()
+        public virtual void Initialize()
         {
             rectTrans = GetComponent<RectTransform>();
         }
