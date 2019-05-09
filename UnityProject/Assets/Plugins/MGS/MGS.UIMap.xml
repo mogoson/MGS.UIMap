@@ -4,34 +4,6 @@
         <name>MGS.UIMap</name>
     </assembly>
     <members>
-        <member name="T:MGS.UIMap.TrailInfo">
-            <summary>
-            Flag Trail Info.
-            </summary>
-        </member>
-        <member name="F:MGS.UIMap.TrailInfo.flag">
-            <summary>
-            Target flag.
-            </summary>
-        </member>
-        <member name="F:MGS.UIMap.TrailInfo.color">
-            <summary>
-            Trail color.
-            </summary>
-        </member>
-        <member name="F:MGS.UIMap.TrailInfo.diffuse">
-            <summary>
-            Trail pixel diffuse.
-            </summary>
-        </member>
-        <member name="M:MGS.UIMap.TrailInfo.#ctor(UnityEngine.RectTransform,UnityEngine.Color,System.Int32)">
-            <summary>
-            Constructor of TrailInfo.
-            </summary>
-            <param name="flag">Target flag.</param>
-            <param name="color">Trail color.</param>
-            <param name="diffuse">Trail pixel diffuse.</param>
-        </member>
         <member name="T:MGS.UIMap.FlagTrail">
             <summary>
             Trail of flag on map.
@@ -112,34 +84,6 @@
             <summary>
             Clear trail pixels.
             </summary>
-        </member>
-        <member name="T:MGS.UIMap.TerrainInfo">
-            <summary>
-            Terrain Info.
-            </summary>
-        </member>
-        <member name="F:MGS.UIMap.TerrainInfo.center">
-            <summary>
-            Center of terrain.
-            </summary>
-        </member>
-        <member name="F:MGS.UIMap.TerrainInfo.width">
-            <summary>
-            Width of terrain.
-            </summary>
-        </member>
-        <member name="F:MGS.UIMap.TerrainInfo.length">
-            <summary>
-            Length of terrain.
-            </summary>
-        </member>
-        <member name="M:MGS.UIMap.TerrainInfo.#ctor(UnityEngine.Transform,System.Single,System.Single)">
-            <summary>
-            Constructor of TerrainInfo.
-            </summary>
-            <param name="center">Center of terrain.</param>
-            <param name="width">Width of terrain.</param>
-            <param name="length">Length of terrain.</param>
         </member>
         <member name="T:MGS.UIMap.GlobalMap">
             <summary>
@@ -259,6 +203,62 @@
             <summary>
             Update flag's rotation.
             </summary>
+        </member>
+        <member name="T:MGS.UIMap.TerrainInfo">
+            <summary>
+            Terrain Info.
+            </summary>
+        </member>
+        <member name="F:MGS.UIMap.TerrainInfo.center">
+            <summary>
+            Center of terrain.
+            </summary>
+        </member>
+        <member name="F:MGS.UIMap.TerrainInfo.width">
+            <summary>
+            Width of terrain.
+            </summary>
+        </member>
+        <member name="F:MGS.UIMap.TerrainInfo.length">
+            <summary>
+            Length of terrain.
+            </summary>
+        </member>
+        <member name="M:MGS.UIMap.TerrainInfo.#ctor(UnityEngine.Transform,System.Single,System.Single)">
+            <summary>
+            Constructor of TerrainInfo.
+            </summary>
+            <param name="center">Center of terrain.</param>
+            <param name="width">Width of terrain.</param>
+            <param name="length">Length of terrain.</param>
+        </member>
+        <member name="T:MGS.UIMap.TrailInfo">
+            <summary>
+            Flag Trail Info.
+            </summary>
+        </member>
+        <member name="F:MGS.UIMap.TrailInfo.flag">
+            <summary>
+            Target flag.
+            </summary>
+        </member>
+        <member name="F:MGS.UIMap.TrailInfo.color">
+            <summary>
+            Trail color.
+            </summary>
+        </member>
+        <member name="F:MGS.UIMap.TrailInfo.diffuse">
+            <summary>
+            Trail pixel diffuse.
+            </summary>
+        </member>
+        <member name="M:MGS.UIMap.TrailInfo.#ctor(UnityEngine.RectTransform,UnityEngine.Color,System.Int32)">
+            <summary>
+            Constructor of TrailInfo.
+            </summary>
+            <param name="flag">Target flag.</param>
+            <param name="color">Trail color.</param>
+            <param name="diffuse">Trail pixel diffuse.</param>
         </member>
     </members>
 </doc>
